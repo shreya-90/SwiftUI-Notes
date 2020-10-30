@@ -1,0 +1,28 @@
+SwiftUI
+
+TextField
+
+@State private var checkAmount = ""
+TextField("Amount", text: $checkAmount)
+  .keyboardType(.decimalPad)
+
+Picker
+
+@State private var numberOfPeople = ""
+Picker("Number of people", selection: $numberOfPeople) {
+        ForEach(2 ..< 100) {
+            Text("\($0) people")
+        }
+  }
+
+
+  Segmented Control Picker
+
+let tipPercentages = [10, 15, 20, 25, 0]
+@State private var tipPercentage = 2   //Initial selection
+
+  Picker("Tip percentage", selection: $tipPercentage) {
+       ForEach(0 ..< tipPercentages.count) {
+           Text("\(self.tipPercentages[$0])%")
+       }
+   }.pickerStyle(SegmentedPickerStyle())
