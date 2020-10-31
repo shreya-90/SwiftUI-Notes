@@ -1,0 +1,28 @@
+SwiftUI
+
+Button
+
+1. Button - title - action closure
+
+Button("Tap me!") {
+    print("Button was tapped")
+}
+
+2. Button - action - title closure. //This is particularly common when you want to incorporate images into your buttons.
+Button(action: {
+    print("Button was tapped")
+}) { 
+    Text("Tap me!")
+}
+
+
+Alert
+
+
+@State private var showingAlert = false
+@State private var alertTitle = "Hello SwiftUI!"
+@State private var alertMessage = "This is some detail message"
+
+.alert(isPresented: $showingAlert) {
+            Alert(title: Text("Hello SwiftUI!"), message: Text("This is some detail message"), dismissButton: .default(Text("OK")))
+}
