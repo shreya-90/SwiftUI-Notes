@@ -1,0 +1,46 @@
+SwiftUI
+
+
+List (UITableView in Swift)
+
+The job of List is to provide a scrolling table of data.
+Identical to Form, except it’s used for presentation of data
+rather than requesting user input.
+
+We’ve used ForEach with ranges a lot, either hard-coded (0..<5) or relying on variable data (0 ..< students.count), and that works great because SwiftUI can identify each row uniquely based on its position in the range.
+
+When working with an array of data, SwiftUI still needs to know how to identify
+each row uniquely, so if one gets removed it can simply remove that one rather
+than having to redraw the whole list. This is where the id parameter comes in,
+and it works identically in both List and ForEach –
+it lets us tell SwiftUI exactly what makes each item in the array unique.
+
+eg 1:
+
+let people = ["Finn", "Leia", "Luke", "Rey"]
+
+    var body: some View {
+        List(people, id: \.self) {
+            Text($0)
+      }
+  }
+
+
+eg 2:  List {
+          ForEach(people, id: \.self) {
+          Text($0)
+    }
+}
+
+
+
+Loading resources from Bundle
+
+When Xcode builds your iOS app, it creates something called a “bundle”.
+if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+    // we found the file in our bundle!
+}
+
+if let fileContents = try? String(contentsOf: fileURL) {
+    // we loaded the file into a string!
+}
